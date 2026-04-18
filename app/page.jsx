@@ -50,6 +50,12 @@ export default function Home() {
                   <p className="text-gray-400 text-sm line-clamp-4">
                     {item.note}
                   </p>
+                  <button
+                    onClick={(e) => remove(e, item.title)}
+                    className="absolute top-3 right-3"
+                  >
+                    <Trash2 className="size-4 hover:text-red-400 cursor-pointer" />
+                  </button>
                 </div>
               ))
             ) : (
