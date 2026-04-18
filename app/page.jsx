@@ -16,9 +16,7 @@ export default function Home() {
   function remove(e, name) {
     e.stopPropagation();
 
-    const updatedNotes = allNotes.filter(
-      (item) => item.title !== name,
-    );
+    const updatedNotes = allNotes.filter((item) => item.title !== name);
 
     setAllNotes(updatedNotes);
 
@@ -43,18 +41,15 @@ export default function Home() {
                 <div
                   key={index}
                   onClick={() => router.push(`/${item.title}`)}
-                  className=" relative p-2 bg-gray-900 border border-gray-700 rounded-2xl shadow-lg cursor-pointer hover:border-gray-500"
+                  // Change 'h-auto' to a specific height like 'h-48'
+                  className="relative p-5 h-48 bg-gray-900 border border-gray-700 rounded-2xl shadow-lg cursor-pointer hover:border-gray-500 overflow-hidden"
                 >
-                  <h2 className="text-xl font-bold text-white mb-2">
+                  <h2 className="text-xl font-bold text-white mb-2 truncate pr-6">
                     {item.title}
                   </h2>
-                  <p className="text-gray-400 wrap-break-words">{item.note}</p>
-                  <button
-                    onClick={(e) => remove(e, item.title)}
-                    className="absolute top-3 right-3"
-                  >
-                    <Trash2 className="size-4 hover:text-red-400 cursor-pointer" />
-                  </button>
+                  <p className="text-gray-400 text-sm line-clamp-4">
+                    {item.note}
+                  </p>
                 </div>
               ))
             ) : (
